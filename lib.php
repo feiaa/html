@@ -46,8 +46,8 @@ function htmlSidebar(){
     echo '<span class="submenu">
         <div class="submenuentries" id="submenuContest">
             <ul>
-                <li><a href="">Sign In</a></li>
-                <li><a href="">Sign Up</a></li>
+                <li><a href="">contest 1</a></li>
+                <li><a href="">contest 2</a></li>
             </ul>
         </div>
     </span>';
