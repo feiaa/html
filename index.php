@@ -11,14 +11,14 @@
     <div class="content">
         <div class="contests">
 
-            <h2>图像分类</h2>
+            <h2 onclick="atest('#myModal')">图像分类</h2>
             <div class="contest">
                 <div class="contest-abstract">
                 比赛的摘要..
                 </div>
             </div>
             <div class="clearFloat"></div>
-            <a href="#" onclick="atest('#myModal')" class="contest-more">详情>></a>
+            <a href="#...." onclick="atest('#myModal')" class="contest-more">详情>></a>
             <div class="clearFloat"></div>
            
             <?php

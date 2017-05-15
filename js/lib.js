@@ -13,6 +13,7 @@ function activateSidebar() {
 
 function atest(id) {
     // $(".submenuentries").attr("class", "submenuentries show");
+    alert("alert");
     $(id).modal('show');
 }
 
