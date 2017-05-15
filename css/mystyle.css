@@ -1,0 +1,303 @@
+
+
+
+
+ol,ul,li{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+ol,ul{list-style:none;}
+a{text-decoration:none; outline:none;}
+.clearFloat{clear:both;}
+/*
+body
+*/
+body{
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+.redFont{
+	color: red;
+}
+/*
+wrap
+*/
+.wrap{
+	width:1000px;
+	padding:0 12px;
+	margin:0 auto;
+}
+/*
+header
+*/
+header{
+	font-size:12px;
+	position:relative;
+	background:#fff;
+	max-height: 80px;
+	border-bottom:1px solid #eee;
+	margin:0 0 20px 0;
+}
+.logo{
+	float:left;
+	padding:5px;
+}
+
+.content{
+	font-size:12px;
+	width:80%;
+	min-height: 40em;
+	background:#fff;
+	float:left;
+	margin:0 0 20px 0;
+	border:1px solid #eee;
+	-moz-box-shadow:0 0 10px #f2f2f2;
+	-webkit-box-shadow:0 0 10px #f2f2f2;
+	box-shadow:0 0 10px #f2f2f2;
+}
+.content h2{
+	font-size:18px;
+	font-weight:bold;
+	text-shadow:0 0 5px #eee;
+	letter-spacing:.5px;
+	padding:5px 0;
+	margin:10px 15px 0 15px;
+	border-bottom:1px dotted #eee;
+}
+.content h2,
+.content h2 a{
+	color:#5d5d5d;
+}
+
+
+/*
+sidebar one
+*/
+div.sidebar{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	/*float: left;*/
+	width:150px;
+	margin:0 20px 20px 0;
+	z-index:1;
+}
+.widget{
+	position:fixed;
+	padding:0;
+	width:150px;
+	border:1px solid #eee;
+	background:#ffffff;
+	-moz-box-shadow:0 0 10px #f2f2f2;
+	-webkit-box-shadow:0 0 10px #f2f2f2;
+	box-shadow:0 0 10px #f2f2f2;
+	font-size:12px;
+	margin:0 0 10px 0;
+}
+.widget a{
+	display:block;
+	color:#7d7d7d;
+	padding:10px;
+}
+.widget a:hover{
+	background-color:#f9f9f9;
+}
+.widget li{
+	position: relative;
+	display: block;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+.widget li.active>div:before{
+	content:"";
+	width:6px;
+	height:35px;
+	position: absolute;
+	left:-6px;
+	top:0;
+	background:#3d3d3d;
+	-moz-border-top-left-radius:.3em;
+	-webkit-border-top-left-radius:.3em;
+	border-top-left-radius:.3em;
+	-moz-border-bottom-left-radius:.3em;
+	-webkit-border-bottom-left-radius:.3em;
+	border-bottom-left-radius:.3em;
+	color:#fff;
+}
+.widget li div span{
+	font-size: 20px;
+	vertical-align: middle;
+	margin: 0 8px;
+}
+.widget li div a{
+	display: inline-block;
+	font-size: 12px;
+	padding:10px 10px 10px 2px;
+	text-align: left;
+	margin:0;
+}
+.widget li:hover,
+.widget li.active{
+	background-color:#f9f9f9;
+}
+
+.submenu {
+    position: relative;
+    display: block;
+    left: 110%;
+    top: -35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.submenu .submenuentries {
+    visibility: hidden;
+    width: 140px;
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+}
+.submenu li a:hover,
+.submenu li:hover{
+	background-color: #f0f0f0;
+}
+/* Popup arrow */
+.submenu .submenuentries::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    /*margin-left: -10px;*/
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #eee transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.submenu .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+
+
+/* Sidebar */
+.sidebar{
+	float:left;
+	margin:20px 0 0 0;
+}
+
+.contests{
+
+}
+.contest {
+	float: left;
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+.contest .contest-abstract{
+	font-size:14px;
+	text-indent: 2em;
+	font-weight: lighter;
+	padding: 5px;
+	min-height: 8em;
+	margin-bottom: 2em;
+}
+.contest-specification{
+	display: inline-block;
+	padding: 10px, 15px;
+}
+.contest-specification p{
+	font-size: 14px;
+	text-indent: 2em;
+}
+.contest-specification h2{
+	font-size:18px;
+	font-weight:bold;
+	text-shadow:0 0 5px #eee;
+	letter-spacing:.5px;
+	padding:5px 0;
+	margin:10px 15px 0 15px;
+}
+
+.contests .contest-more{
+	display:inline-block;
+	float: right;
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f9f9f9 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f9f9f9));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f9f9f9 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#f9f9f9 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#f9f9f9 100%);
+	background: linear-gradient(top,  #ffffff 0%,#f9f9f9 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f9f9f9',GradientType=0 );
+	-moz-box-shadow:0 4px 0 #ccc;
+	-webkit-box-shadow:0 4px 0 #ccc;
+	box-shadow:0 4px 0 #ccc;
+	padding:10px 15px;
+	margin: 15px 30px;
+	font-size:14px;
+	color:#aaa;
+	text-shadow:0 0 2px #fff;
+	/*border:1px solid #ddd;*/
+	-moz-border-radius:.5em;
+	-webkit-border-radius:.5em;
+	/*border-radius:.5em;*/
+}
+.contest-more:hover{
+	background: #eeeeee;
+	background: -moz-linear-gradient(top,  #f9f9f9 0%, #ffffff 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(100%,#ffffff));
+	background: -webkit-linear-gradient(top,  #f9f9f9 0%,#ffffff 100%);
+	background: -o-linear-gradient(top,  #f9f9f9 0%,#ffffff 100%);
+	background: -ms-linear-gradient(top,  #f9f9f9 0%,#ffffff 100%);
+	background: linear-gradient(top,  #f9f9f9 0%,#ffffff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#ffffff',GradientType=0 );
+}
+
+
+/*
+footer
+*/
+footer{
+	font-size:12px;
+	border-top:1px solid #ddd;
+	background:#fff;
+	color:#7d7d7d;
+	padding:10px 0;
+}
+footer ul{
+	width:180px;
+	padding:10px;
+	float:left;
+}
+footer li{
+	padding:5px 0;
+}
+footer .title{
+	font-size:14px;
+	color:#ccc;
+	padding:0 0 10px 0;
+	margin:0 0 10px 0;
+	text-transform:uppercase;
+}
+footer li a{
+	color:#aaa;
+}
+footer li a:hover{
+	color:#5d5d5d;
+}
