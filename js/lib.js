@@ -13,9 +13,22 @@ function activateSidebar() {
 
 function atest(id) {
     // $(".submenuentries").attr("class", "submenuentries show");
-    alert("alert");
-    $(id).modal('show');
+    // alert("alert");
+    // $("#".id).modal('show');
+    alert(id);
 }
+
+
+$('#myModal').on('shown.bs.modal', function(e) {
+    $('#myModal').modal('hide');
+    alert(e.relatedTarget);
+})
+
+
+$('#myModal').on('show.bs.modal', function(e) {
+    $("#myModal").modal("hide");
+    alert(e.relatedTarget);
+})
 
 
 function activateSubmenu(id) {

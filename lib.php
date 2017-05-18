@@ -1,6 +1,6 @@
 <?php
+include 'config.php';
 
-define("CONTEST_RESULT_TABLE_PREFIX", "CONTEST_RESULT_");
 
 function htmlHeader($title){
 	echo 
@@ -21,6 +21,7 @@ function htmlHeader($title){
 ";
 }
 
+
 function htmlBanner(){
 	echo "
 <header>
@@ -32,6 +33,7 @@ function htmlBanner(){
  </div>
 </header>";
 }
+
 
 function htmlSidebar(){
     echo '
@@ -72,6 +74,7 @@ function htmlSidebar(){
     ';
 }
 
+
 function htmlFooter($value=''){
 	echo     
 "<div class=\"clearFloat\"></div>
@@ -87,6 +90,7 @@ function htmlFooter($value=''){
 </html>";
 }
 
+
 function connect2mysql(){
     $mysqli = new mysqli("localhost", "webuser", "1111", "webdata");
     // $conn = mysqli_connect("localhost", "webuser", "1111");
@@ -96,6 +100,7 @@ function connect2mysql(){
     }
     return $mysqli;
 }
+
 
 function writeMsg() {
   echo "Hello world!";
