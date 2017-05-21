@@ -1,3 +1,7 @@
+// 
+// Author: yyf
+// 
+// 
 function activateSidebar() {
     var filename = location.href;
     filename = filename.substr(filename.lastIndexOf('/') + 1);
@@ -14,21 +18,36 @@ function activateSidebar() {
 function atest(id) {
     // $(".submenuentries").attr("class", "submenuentries show");
     // alert("alert");
-    // $("#".id).modal('show');
-    alert(id);
+    $("#" + id).modal('show');
+    // alert("#" + id);
 }
 
 
-$('#myModal').on('shown.bs.modal', function(e) {
-    $('#myModal').modal('hide');
-    alert(e.relatedTarget);
-})
+function showLoginModal(){
+    $("#myModal").modal('show');
+}
 
 
-$('#myModal').on('show.bs.modal', function(e) {
-    $("#myModal").modal("hide");
-    alert(e.relatedTarget);
-})
+$(document).ready(function() {
+
+    // alert("document ready");
+
+    $('#myModal').on('shown.bs.modal', function(e) {
+        // $('#myModal').modal('hide');
+        // alert("shown.bs.modal");
+    })
+
+    $('#myModal').on('show.bs.modal', function(e) {
+        // $("#myModal").modal("hide");
+        // e.preventDefault();
+        // alert("show.bs.modal");
+    })
+
+    $("#myModal").on('hide.bs.modal', function(e) {
+        // alert("preventDefault");
+        // e.preventDefault();
+    })
+});
 
 
 function activateSubmenu(id) {
@@ -46,8 +65,15 @@ function doNothing() {
 }
 
 
-function beforeSignin() {
-    $("#emailSignin").html
+function checkSignin() {
+    // TODO: check sign in
+    return true;
+}
+
+
+function checkSignup() {
+    // TODO: check sign up
+    return true;
 }
 
 

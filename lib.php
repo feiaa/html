@@ -55,14 +55,16 @@ function htmlSidebar(){
     </span>';
     echo '</li>
                 <li id="Profile" onmouseover="activateSubmenu(\'#submenuProfile\')"
-                    onmouseleave="deactivateSubmenu(\'#submenuProfile\')"><div><span class="glyphicon glyphicon-user"></span>
-                    <a href="">Profile</a></div>';
+                    onmouseleave="deactivateSubmenu(\'#submenuProfile\')"><div><span class="glyphicon glyphicon-user"></span>';
+                    // 
+    echo checkCookie().'</div>';
     // Test
     echo '<span class="submenu">
         <div class="submenuentries" id="submenuProfile">
             <ul>
-                <li><a href="">Sign In</a></li>
-                <li><a href="">Sign Up</a></li>
+                <li><a href="">Profile</a></li>
+                <li onclick="showLoginModal()"><a >Sign In</a></li>
+                <li><a href="./usermanager.php?action=2">Log Out</a></li>
             </ul>
         </div>
     </span>';
@@ -92,7 +94,7 @@ function htmlFooter($value=''){
 
 
 function connect2mysql(){
-    $mysqli = new mysqli("localhost", "webuser", "1111", "webdata");
+    $mysqli = new mysqli(HOSTIP, DATABASEUSER, DATABASEPASSWD, DATABASENAME);
     // $conn = mysqli_connect("localhost", "webuser", "1111");
     if ($mysqli->connect_errno){
         echo "Failed to connect mysql: (".$mysqli->connect_errno.")".$mysqli->connect_error;
@@ -106,12 +108,98 @@ function writeMsg() {
   echo "Hello world!";
 }
 
+
 function not_found(){
     header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
     printf("<h style='font-size:40px'>404 Not Found</h>
         <p>The requested URL was not found on this server.</p>
         ");
     exit();
+}
+
+
+// set is true means to set user cookie.
+function checkUser($email, $passwd, $set){
+    $mysqli = connect2mysql();
+
+    // echo "select ".USERID.", ".PASSWD." from ".USERS." where ".MAIL." = '$email';";
+    $res = $mysqli->query("select ".USERID.", ".PASSWD.", ".USERNAME." from ".USERS." where ".MAIL." = '$email';");
+
+    if($res->num_rows != 1){
+        return false;
+    }
+
+    $res->data_seek(0);
+    $row = $res->fetch_assoc();
+    if($set && $row[PASSWD] == $passwd){
+        // 86400 * 30 = 1 month
+        setcookie(COOKIEUSERID, $row[USERID], time() + 86400 * 30);
+        setcookie(COOKIEUSERNAME, $row[USERNAME], time() + 86400 * 30);
+    }
+
+    $mysqli->close();
+
+    return $row[PASSWD] == $passwd;
+}
+
+
+// TODO: dynamic allocate user id.
+// Need to be efficient.
+function allocUserId(){
+
+    $mysqli = connect2mysql();
+
+    $res = $mysqli->query("select count(*) from ".USERS." ;");
+
+    $mysqli->close();
+
+    return $res->fetch_row()[0];
+}
+
+
+// TODO: nickname and name should be different.
+function registerUser($nickname, $email, $passwd){
+    $mysqli = connect2mysql();
+
+    // Mail has already exis..??
+    $res = $mysqli->query("select * from ".USERS." where '$email' = ".MAIL.";");
+    echo "select * from ".USERS." where '$email' = ".MAIL.";";
+    if(!$res || $res->num_rows != 0){
+        $mysqli->close();
+        return -1;
+    }
+
+    $id = allocUserId();
+    $res = $mysqli->query("insert into ".USERS." values($id, '$email', '$passwd', 0, 0, '$nickname', '$nickname');");
+
+    if(!$res){
+        $mysqli->close();
+        return -2;
+    }
+
+    $mysqli->close();
+    return 0;  
+}
+
+
+// Check user identity cookies.
+// return format:
+// <a href="">contents</a>
+function checkCookie(){
+
+    if(!isset($_COOKIE[COOKIEUSERID])){
+        return '<a style="color:red" href="">NOT LOGIN</a>';
+    }
+
+    return '<a >'.$_COOKIE[COOKIEUSERNAME].'</a>';
+}
+
+
+function deleteCookie(){
+    if(isset($_COOKIE[COOKIEUSERID])){
+        setcookie(COOKIEUSERID, $_COOKIE[COOKIEUSERID], time() - 10);
+        setcookie(COOKIEUSERNAME, $_COOKIE[COOKIEUSERNAME], time() - 10);
+    }
 }
 
 ?>
