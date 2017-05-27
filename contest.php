@@ -19,6 +19,7 @@
 <!-- We are in the body tag of this html file now! -->
 
 <div class="wrap">
+
     <?php htmlSidebar(); ?>
     
     <div class="content">
