@@ -40,7 +40,7 @@
 <?php
 $res = $mysqli->query("select title, abstract, description from contests where contest_id = ".$contest_id);
 $row = $res->fetch_assoc();
-printf("<div class='contest-specification'>
+printf("<div class='panel-body contest-specification'>
     <h2> %s </h2> <br />
     <p>%s</p>
     <br />
